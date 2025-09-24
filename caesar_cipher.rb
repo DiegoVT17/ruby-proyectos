@@ -4,21 +4,21 @@ puts "Enter the shift number:"
 code = gets.chomp.to_i
 
 def caesar_cipher(string, code)
-  lower = "abcdefghijklmnopqrstuvwxyz"
-  upper = lower.upcase
-  new_string = ""
+  lower = ("a".."z").to_a
+  upper = ("A".."Z").to_a
+  encrypted = ""
   string.each_char do |char|
     if lower.include?(char)
       idx = lower.index(char)
-      new_string += lower[(idx + code) % lower.length]
+      encrypted += lower[(idx + code) % lower.length]
     elsif upper.include?(char)
       idx = upper.index(char)
-      new_string += upper[(idx + code) % upper.length]
+      encrypted += upper[(idx + code) % upper.length]
     else
-      new_string += char
+      encrypted += char
     end
   end
-  new_string
+  encrypted
 end
 
 result = caesar_cipher(text,code)
